@@ -7,7 +7,9 @@
         "utility": "cpp",
         "valarray": "cpp",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "random": "cpp",
+        "*.tcc": "cpp"
     },
     "cph.general.onceMaintainerMessage": false
 }

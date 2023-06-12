@@ -11,16 +11,16 @@ int main()
     // }
     // sortcut system
 
-    // x.insert(x.begin() + 2, v.begin(), v.end()); // insert multiple data in x
-    // for (int a : x)
-    // {
-    //     cout << a << " ";
-    // }
-    // v.erase(v.begin() + 2);// single delete value
-    v.erase(v.begin() + 2, v.begin() + 4); // Multi delete value
-    for (int a : v)
+    x.insert(x.begin() + 2, v.begin(), v.end()); // insert multiple data in x
+    for (int a : x)
     {
         cout << a << " ";
     }
+    // v.erase(v.begin() + 2);// single delete value
+    // v.erase(v.begin() + 2, v.begin() + 4); // Multi delete value
+    // for (int a : v)
+    // {
+    //     cout << a << " ";
+    // }
     return 0;
 }
