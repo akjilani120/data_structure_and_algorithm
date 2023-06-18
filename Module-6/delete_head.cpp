@@ -143,7 +143,7 @@ int main()
             cin >> posi;
             cout << " Enter value : ";
             cin >> val;
-            if (posi == 0)
+             if (posi == 0)
             {
                 insert_at_head(head, val);
             }
