@@ -42,43 +42,43 @@ int size(Node *head)
     }
     return cnt;
 }
-void delete_node(Node *head, int pos)
+void insert_head(Node *&head, Node *&tail, int val)
 {
-    Node *temp = head;
-    for (int i = 1; i <= pos - 1; i++)
-    {
-        temp = temp->next;
-    }
-    Node *deleteNode = temp->next;
-    temp->next = temp->next->next;
-    temp->next->prev = temp;
-    delete deleteNode;
-}
-void delete_tail(Node *&head, Node *&tail)
-{
-    Node *deleteNode = tail;
-    tail = tail->prev;
-    delete deleteNode;
-    if (tail == NULL)
-    {
-        head = NULL;
-        return;
-    }
-
-    tail->next = NULL;
-}
-void delete_head(Node *&head, Node *&tail)
-{
-    Node *deleteNode = head;
-    head = head->next;
-    delete deleteNode;
+    Node *newNode = new Node(val);
     if (head == NULL)
     {
-        tail = NULL;
+        head = newNode;
+        tail = newNode;
         return;
     }
 
-    head->prev = NULL;
+    newNode->next = head;
+    head->prev = newNode;
+    head = newNode;
+}
+void insert_tail(Node *&tail, Node *&head, int value)
+{
+    Node *newNode = new Node(value);
+    if (tail == NULL)
+    {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    tail->next = newNode;
+    newNode->prev = tail;
+    tail = tail->next;
+}
+void reverse_doubly(Node *head, Node *tail)
+{
+    Node *i = head;
+    Node *j = tail;
+    while (i != j && i->next != j)
+    {
+        swap(i->val, j->val);
+        i = i->next;
+        j = j->prev;
+    }
 }
 int main()
 {
@@ -86,36 +86,18 @@ int main()
     Node *a = new Node(20);
     Node *b = new Node(30);
     Node *c = new Node(40);
-    Node *tail = c;
+    Node *d = new Node(50);
+    Node *tail = d;
     head->next = a;
     a->prev = head;
     a->next = b;
     b->prev = a;
     b->next = c;
     c->prev = b;
-    // Node *head = NULL;
-    // Node *tail = NULL;
-    int pos;
-    cin >> pos;
-    if (pos >= size(head))
-    {
-        cout << "Invalid size" << endl;
-    }
-    else if (pos == size(head) - 1)
-    {
-        delete_tail(head, tail);
-    }
-    else if (pos == 0)
-    {
-        delete_head(head, tail);
-    }
-    else
-    {
-        delete_node(head, pos);
-    }
-
+    c->next = d;
+    d->prev = c;
+    reverse_doubly(head, tail);
     linked_normal(head);
-    cout << endl;
-    linked_reverse(tail);
+
     return 0;
 }
