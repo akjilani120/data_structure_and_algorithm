@@ -7,6 +7,7 @@ int main()
     string word;
     stringstream ss(sentence);
     map<string, int> mp;
+
     while (ss >> word)
     {
         mp[word]++;

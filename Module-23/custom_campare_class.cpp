@@ -18,13 +18,13 @@ class cmp
 public:
     bool operator()(Studend a, Studend b)
     {
-        if (a.marks > b.marks)
+        if (a.marks < b.marks)
             return true;
-        else if (a.marks < b.marks)
+        else if (a.marks > b.marks)
             return false;
         else
         {
-            if (a.roll > b.roll)
+            if (a.roll < b.roll)
                 return true;
             else
                 return false;
